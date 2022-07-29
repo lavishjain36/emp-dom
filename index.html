@@ -4,38 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOM</title>
-    
+    <title>EMployee Data</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 </head>
 <body>
+    <!-- create 3 buttons -->
+    <section class="container-fluid mt-3">
+        <button class="btn btn-primary" id="all-emp-btn">All Employee</button>
+        <button class="btn btn-primary" id="male-emp-btn">Male Employee</button>
+        <button class="btn btn-primary" id="female-emp-btn">Female Employee</button>
    
 
-    <!-- <p>Hello People!</p>
-    <p>Hello People New</p>
-     <p id="parag"></p> -->
+    <br><br>
+    <!-- Input tag for search functionality  -->
+    <form action="" >
+        <label for="">Type Employee Name</label>:
+        <input type="search" class="inputField" id="search-box" placeholder="Search Here">
+    </form>
 
-     <!-- <div id="parag">
-        <p id="para1">This is FIrst Paragraph</p>
-        <p id="para2">This is Second Paragraph</p>
-     </div> -->
+    <br><br>
+    <!-- create a layout for table to display the data in table format -->
+    <table class="table table-dark table bordered">
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>IP Address</th>
+        </thead>
 
-     <section>
-        <h1 id="heading">Hello</h1>
-        <button onclick="myfun()">Submit</button>
+        <!-- create a table body to insert the data  -->
+        <tbody id="table-body"></tbody>
+    </table>
      </section>
 
-     <section>
-        <ol class="list-item">
-            <li >item-1</li>
-            <li>item-2</li>
-            <li class="test">item-3</li>
-            <li>item-4</li>
-            <li>item-5</li>
-            <li>item-6</li>
-        </ol>
-        <button class="btn">Submit</button>
-     </section>
-
-    <script src="script.js"></script>
+     <script src="script.js"></script>
 </body>
 </html>

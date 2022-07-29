@@ -1,82 +1,168 @@
-// document.getElementById("parag").innerHTML = `<h1>Hello folks</h1>`
+//Array of employee 
+let employees = [   
+    {
+        id:1,
+        first_name:"Ajinkya",
+        last_name:"Batki",
+        email:"ajinkya@gmail.com",
+        gender:"male",
+        ip_address:"160.192.178.23"
+    },
+      {
+        id:2,
+        first_name:"Omnkar",
+        last_name:"Lolge",
+        email:"omkar@gmail.com",
+        gender:"male",
+        ip_address:"160.182.178.23"
+    },
+      {
+        id:3,
+        first_name:"Shruti",
+        last_name:"Mannikeri",
+        email:"shruti@gmail.com",
+        gender:"female",
+        ip_address:"160.172.178.23"
+    },
 
-// let pelement=document.getElementsByTagName("p");
-// document.getElementById("parag").innerHTML ="The innerHtml paragraph is: "+pelement[1].innerHTML;
+      {
+        id:4,
+        first_name:"Jenny",
+        last_name:"Doe",
+        email:"jenny@gmail.com",
+        gender:"female",
+        ip_address:"160.192.168.23"
+    },
+      {
+        id:5,
+        first_name:"Aiman",
+        last_name:"shahid",
+        email:"aiman@gmail.com",
+        gender:"female",
+        ip_address:"160.152.178.23"
+    },
+
+     {
+        id:6,
+        first_name:"Lavish",
+        last_name:"Jain",
+        email:"lavish@gmail.com",
+        gender:"male",
+        ip_address:"160.152.148.23"
+    },
+
+     {
+        id:7,
+        first_name:"Pranav",
+        last_name:"Bansal",
+        email:"pranav@gmail.com",
+        gender:"male",
+        ip_address:"160.152.128.23"
+    },
+     {
+        id:8,
+        first_name:"Divyesh",
+        last_name:"Bhuva",
+        email:"divyesh@gmail.com",
+        gender:"male",
+        ip_address:"160.152.138.23"
+    },
+     {
+        id:9,
+        first_name:"Tejas",
+        last_name:"Mahajan",
+        email:"tejas@gmail.com",
+        gender:"male",
+        ip_address:"160.132.178.23"
+    },
+     {
+        id:10,
+        first_name:"Nancy",
+        last_name:"flora",
+        email:"nancy@gmail.com",
+        gender:"female",
+        ip_address:"160.152.178.23"
+    },
+];
 
 
-//created an new element p tag
-// let para=document.createElement("p");
-// let node=document.createTextNode("This is new paragraph");
-// para.appendChild(node);
+//All employee data 
+let allEmpButton=document.querySelector("#all-emp-btn");
+allEmpButton.addEventListener("click",function(){
+    //Logic
+    //call display function
+    displayEmployees(employees);//calling of function
 
-//merge the new element with the existing element
-// let divelement=document.getElementById("parag");
-// divelement.appendChild(para);
+})
 
 
-// function myfun(){
+// Male Employee Data
+let maleButton=document.querySelector("#male-emp-btn");
+maleButton.addEventListener("click",function(){
+   let maleEmployee=employees.filter(function(employee){
+    return employee.gender === "male"
+})
+console.log(maleEmployee)
+displayEmployees(maleEmployee)
+   
+})
 
-// let h1element=document.getElementById("heading");
-// h1element.innerHTML=`<h1>Hello folks</h1>`;
-// h1element.style.color="red";
-// h1element.style.backgroundColor="yellow";
-// h1element.style.fontSize="50px";
-// }
-// Finding the HTML element
-// document.getElementById(id)=>select an element by element id
-// document.getElementsByTagName(tag)=>find element by tag name
-// document.getElementsByClassName(classname)=>find element by class name
 
-// Adding and Deletion element 
-// document.createElement(element)=>create element
-// document.removeChild(element)=>remove element
-// document.appendChild(element)=>append element
-// document.replaceChild(element,oldelement)=>replace element
-// text="hello"
-// document.write(text)=>write text in the page
+//Female EMployee Data 
 
-// document.getElementById(id).onclick=function(){
-//  //Business Logic 
-// }
+let femaleButton=document.querySelector("#female-emp-btn");
+femaleButton.addEventListener("click",function(){
+    let femaleEmployee=employees.filter(function(employee){
+        return employee.gender === "female";
+    })
+    //calling a display function to print the data of female
+    displayEmployees(femaleEmployee)
+})
 
 
 
-// document.getElementsByClassName("btn")[0].addEventListener("click",function(){
-// //Logic 
-// // document.getElementsByClassName("list-item")[0].innerHTML="<h1>Hello</h1>";
-// // document.getElementsByClassName("list-item")[0].style.color = "red";
-// let listitem=document.getElementsByClassName("list-item");
-// // // console.log(listitem);
-// // let first=listitem.length
-// // console.log(first);
+//Search functionality to search an employee 
+let searchBox=document.querySelector("#search-box")
+searchBox.addEventListener("keyup",function(){
+    //take input using search Box 
+    let textEntered=searchBox.value;
+    console.log(textEntered);
 
-// for(let i=0;i<listitem.length;i++){
-//     listitem[i].innerHTML="<h1>Hello</h1>";
-//     listitem[i].style.color = "red";
-//     listitem[i].style.backgroundColor = "yellow";
-//     listitem[i].style.fontSize = "50px";
-
-// }
-
-// })
-
-
-// Select list element with tag
-// let liElement = document.getElementsByTagName("li");
-// console.log(liElement);
-// let totalLength = liElement.length;
-// console.log(totalLength);
-
-// let firstElement=liElement[0].innerHTML;
-// console.log(firstElement);
-// let last=liElement[totalLength-1].innerHTML;
-// console.log(last);
+    //filter the data using the input
+    let filteredEmployees=[]//create an empty array
+    if(textEntered!==""){
+    filteredEmployees=employees.filter(function(employee){
+        return employee.first_name.toLowerCase().includes(textEntered.toLowerCase()) 
+        || employee.last_name.toLowerCase().includes(textEntered.toLowerCase())
+        || employee.email.toLowerCase().includes(textEntered.toLowerCase())
+    })
+    displayEmployees(filteredEmployees)
+    }
+    else{
+        displayEmployees(employees)
+    }
+})
+//Arrow function with name displayEmployees
+let displayEmployees=(employees)=>{
+    //select the table body using table-body id
+    let tableBody=document.querySelector("#table-body");
 
 
-//Query SelectorAll
-// it is a powerful method to select all the element matching attributes
-let liElement = document.querySelectorAll("ol li.test");
-console.log(liElement);
-//Select first element
-let firstElement=liElement[0].innerHTML;
-console.log(firstElement);
+    //clear the table body
+    let tableRow="";
+    for(let employee of employees){
+        tableRow+=`
+        <tr>
+        <td>${employee.id}</td>
+        <td>${employee.first_name}</td>
+        <td>${employee.last_name}</td>
+        <td>${employee.email}</td>
+        <td>${employee.gender}</td>
+        <td>${employee.ip_address}</td>
+        </tr>
+        `
+        tableBody.innerHTML=tableRow
+    }
+
+
+};
